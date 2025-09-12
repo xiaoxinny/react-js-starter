@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+.nyc_output/
+
+# Logs and caches
+logs/
+*.log
+*.lock
+.eslintcache
+.turbo/
+
+# Environment files
+.env
+.env.*
+!.env.example   # keep example envs formatted
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.DS_Store
+.git
