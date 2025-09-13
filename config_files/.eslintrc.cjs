@@ -1,3 +1,5 @@
+const js = require('@eslint/js');
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -14,7 +16,7 @@ module.exports = {
     es2022: true,
   },
   extends: [
-    'eslint:recommended',
+    js.configs.recommended,                    // <-- ESLint JS linting
     'plugin:@typescript-eslint/recommended',
     'plugin:unicorn/recommended',
     'plugin:react/recommended',

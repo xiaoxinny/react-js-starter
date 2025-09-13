@@ -2,6 +2,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 
 import tsEslintParser from '@typescript-eslint/parser';
 
+import js from '@eslint/js';
 import globals from 'globals';
 
 import reactPlugin from 'eslint-plugin-react';
@@ -15,33 +16,25 @@ import prettierPlugin from 'eslint-plugin-prettier';
 
 export default defineConfig([
   globalIgnores([
-    'node_modules/',      // default also ignores this, but explicit is fine
+    'node_modules/', // default also ignores this, but explicit is fine
     'dist/',
     'build/',
     'coverage/',
-    '*.log',              // any log files
+    '*.log', // any log files
     'logs/',
     '.eslintcache',
     '*.pid',
     '*.pid.lock',
-    'vite/',              // if this is a build output
-    '*.tsbuildinfo',      // ts build cache
-    '.env',               // environment files
-    '.env.*',             // also .env.local, etc
-    '.DS_Store',
+    'vite/', // if this is a build output
+    '*.tsbuildinfo', // ts build cache
+    '.env', // environment files
+    '.env.*', // also .env.local, etc
+    '.DS_Store'
   ]),
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
 
-    // Extending base configs
-    extends: [
-      tseslint.configs.recommended, 
-      unicorn.configs.recommended,          // unicorn plugin recommended rules
-      reactPlugin.configs['recommended'],   // eslint-plugin-react recommended
-      reactHooks.configs['recommended'],    // react-hooks
-      reactRefresh.configs.vite,            // react-refresh via vite
-      prettierPlugin.configs.recommended,    // prettier integration
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
 
     languageOptions: {
       ecmaVersion: 'latest',
@@ -49,8 +42,8 @@ export default defineConfig([
       parser: tsEslintParser,
       globals: {
         ...globals.browser,
-        ...globals.node,
-      },
+        ...globals.node
+      }
     },
 
     plugins: {
@@ -74,7 +67,7 @@ export default defineConfig([
 
       // React rules
       'react/react-in-jsx-scope': 'off', // React 17+ doesn’t require React in scope
-      'react/jsx-uses-react': 'off',     // same
+      'react/jsx-uses-react': 'off', // same
 
       // React Hooks strict rules
       'react-hooks/rules-of-hooks': 'error',
@@ -90,17 +83,17 @@ export default defineConfig([
       // 'n/no-unsupported-features/node': ['error', { version: '>=18' }],
 
       // Misc / other
-      'no-process-env': 'off',
+      'no-process-env': 'off'
 
       // Add any other custom rules here
     },
 
     settings: {
       react: {
-        version: 'detect',
-      },
+        version: 'detect'
+      }
       // For eslint-plugin-n, set node version if needed
       // e.g. settings: { node: { version: '>=18' } }
-    },
+    }
   }
 ]);
