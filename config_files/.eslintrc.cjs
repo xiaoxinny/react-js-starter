@@ -45,6 +45,9 @@ module.exports = {
     'react/react-in-jsx-scope': 'off', // Not needed with React 17+
     'react/prop-types': 'off', // Not needed with TypeScript
 
+    // Unicorn conventions
+    // 'unicorn/filename-case': ['error', { case: 'kebabCase' }],
+
     // Prettier
     'prettier/prettier': 'error',
 
@@ -52,10 +55,19 @@ module.exports = {
     'no-process-env': 'off',
   },
   ignorePatterns: [
+    'node_modules/',      // default also ignores this, but explicit is fine
     'dist/',
-    'node_modules/',
-    '.eslintrc.cjs',
-    '.vite/',       // Vite cache
-    'coverage/',    // test coverage reports
+    'build/',
+    'coverage/',
+    '*.log',              // any log files
+    'logs/',
+    '.eslintcache',
+    '*.pid',
+    '*.pid.lock',
+    'vite/',              // if this is a build output
+    '*.tsbuildinfo',      // ts build cache
+    '.env',               // environment files
+    '.env.*',             // also .env.local, etc
+    '.DS_Store',
   ],
 };
