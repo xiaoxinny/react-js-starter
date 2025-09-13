@@ -48,7 +48,7 @@ export default defineConfig([
       'react-hooks/exhaustive-deps': 'warn',
 
       // Unicorn conventions
-      'unicorn/filename-case': ['error', { case: 'kebabCase' }],
+      // 'unicorn/filename-case': ['error', { case: 'kebabCase' }],
 
       // Prettier integration
       'prettier/prettier': 'error',
