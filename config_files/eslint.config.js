@@ -1,4 +1,3 @@
-// eslint.config.js
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 import tsEslintParser from '@typescript-eslint/parser';
@@ -10,8 +9,7 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
-import tsEslintRecommended from '@typescript-eslint/recommended';
-
+import tseslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
 import nPlugin from 'eslint-plugin-n';
 import prettierPlugin from 'eslint-plugin-prettier';
@@ -38,8 +36,7 @@ export default defineConfig([
 
     // Extending base configs
     extends: [
-      js.configs.recommended,               // ESLint recommended rules for JS
-      tsEslintRecommended,                  // @typescript-eslint recommended
+      tseslint.configs.recommended, 
       unicorn.configs.recommended,          // unicorn plugin recommended rules
       reactPlugin.configs['recommended'],   // eslint-plugin-react recommended
       reactHooks.configs['recommended'],    // react-hooks
@@ -64,6 +61,7 @@ export default defineConfig([
       unicorn: unicorn,
       n: nPlugin,
       prettier: prettierPlugin,
+      'typescript-eslint': tseslint
     },
 
     rules: {

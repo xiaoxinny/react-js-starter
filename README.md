@@ -141,9 +141,9 @@ Then, we update the configuration file:
     import tailwindcss from '@tailwindcss/vite'
 
     export default defineConfig({
-    plugins: [
-        tailwindcss(),
-    ],
+        plugins: [
+            tailwindcss(),
+        ],
     })
 ```
 
