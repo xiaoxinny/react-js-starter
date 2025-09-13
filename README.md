@@ -91,17 +91,17 @@ Run the following command to install the package:
 And you can now import it into respective pages for use!
 
 ```tsx
-    import useSWR from 'swr'
- 
-    function Profile ({ userId }) {
-    const { data, error, isLoading } = useSWR(`/api/user/${userId}`, fetcher)
-    
-    if (error) return <div>failed to load</div>
-    if (isLoading) return <div>loading...</div>
-    
-    // render data
-    return <div>hello {data.name}!</div>
-    }
+import useSWR from "swr";
+
+function Profile({ userId }) {
+  const { data, error, isLoading } = useSWR(`/api/user/${userId}`, fetcher);
+
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
+
+  // render data
+  return <div>hello {data.name}!</div>;
+}
 ```
 
 #### `Storybook`
@@ -117,7 +117,7 @@ Run the following command to install the package:
     npx storybook@latest init
 ```
 
-Storybook will automatically open up its interface at http://localhost:6006/, which then you can visit for live preview and manipulation of the components you have created in the project.
+Storybook will automatically open up its interface at <http://localhost:6006/>, which then you can visit for live preview and manipulation of the components you have created in the project.
 
 ## Additional configuration
 
@@ -136,31 +136,25 @@ Run the following command:
 Then, we update the configuration file:
 
 ```js
-    // vite.config.ts
-    import { defineConfig } from 'vite'
-    import tailwindcss from '@tailwindcss/vite'
+// vite.config.ts
+import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
 
-    export default defineConfig({
-        plugins: [
-            tailwindcss(),
-        ],
-    })
+export default defineConfig({
+  plugins: [tailwindcss()],
+});
 ```
 
 And import Tailwind CSS into your CSS files that uses Tailwind:
 
 ```css
-    @import "tailwindcss";
+@import "tailwindcss";
 ```
 
 Now you can use Tailwind with the application!
 
 ```tsx
-    export default function Home() {
-        return (
-            <h1 className="text-3xl font-bold underline">
-            Hello world!
-            </h1>
-        )
-    }
+export default function Home() {
+  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+}
 ```
