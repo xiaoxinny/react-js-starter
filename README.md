@@ -5,21 +5,21 @@ This template serves the purpose of making it simple for starting React.js based
 Before beginning, the following command must be ran to create the React.js application:
 
 ```bash
-    npm create vite@latest
+npm create vite@latest
 ```
 
 Follow through the instructions and choose the following options:
 
 ```txt
-    React
-    Typescript + SWC
+React
+Typescript + SWC
 ```
 
 Then, to test if it has been created successfully:
 
 ```bash
-    cd <app-name>
-    npm run dev
+cd <app-name>
+npm run dev
 ```
 
 ## Essential packages
@@ -32,37 +32,37 @@ Run the following command to install the packages below (make sure you have chan
 - [Prettier](https://prettier.io/) (Code formatting)
 
 ```bash
-    npm install --save-dev husky lint-staged prettier eslint-config-prettier eslint-plugin-prettier prettier-plugin-packagejson eslint-plugin-unicorn eslint-plugin-react eslint-plugin-n
+npm install --save-dev husky lint-staged prettier eslint-config-prettier eslint-plugin-prettier prettier-plugin-packagejson eslint-plugin-unicorn eslint-plugin-react eslint-plugin-n
 ```
 
 Afterwards, run the following commands:
 
 ```bash
-    npx husky init
-    node --eval "fs.writeFileSync('.husky/pre-commit','npx lint-staged\n')"
+npx husky init
+node --eval "fs.writeFileSync('.husky/pre-commit','npx lint-staged\n')"
 ```
 
 Edit `package.json` to add these lines at the bottom of it:
 
 ```js
-    "scripts": {
-        // Other codes here, replace if necessary
-        "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs",
-        "lint:check": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs --max-warnings=0",
-        "format": "prettier --write .",
-        "format:check": "prettier --check ."
-    },
-    // Other codes here
-    "lint-staged": {
-        "**/*.{ts,tsx,js,jsx,cjs,json,yml,yaml}": [
-            "npm run format",
-            "npm run format:check"
-        ],
-        "**/*.{ts,tsx,js,jsx,cjs}": [
-            "npm run lint",
-            "npm run lint:check"
-        ]
-    }
+"scripts": {
+    // Other codes here, replace if necessary
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs",
+    "lint:check": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+},
+// Other codes here
+"lint-staged": {
+    "**/*.{ts,tsx,js,jsx,cjs,json,yml,yaml}": [
+        "npm run format",
+        "npm run format:check"
+    ],
+    "**/*.{ts,tsx,js,jsx,cjs}": [
+        "npm run lint",
+        "npm run lint:check"
+    ]
+}
 ```
 
 Alternatively, there is another method to include the `lint-staged` configuration above, which is recommended for mono-repo projects that have different configurations across, or different programming languages.
@@ -70,46 +70,46 @@ Alternatively, there is another method to include the `lint-staged` configuratio
 Create a file called `.lintstagedrc.json` and add in the above. This assumes your structure resembles the following:
 
 ```txt
-    my-monorepo/
-    │── package.json          # root for Husky, lint-staged, etc.
-    │── .husky/
-    │── .lintstagedrc.json
-    │── packages/
-    │   ├── frontend/         # your Vite project lives here
-    │   └── backend/
+my-monorepo/
+│── package.json          # root for Husky, lint-staged, etc.
+│── .husky/
+│── .lintstagedrc.json
+│── packages/
+│   ├── frontend/         # your Vite project lives here
+│   └── backend/
 ```
 
 The code from above will change slightly in this configuration:
 
 ```json
-    // package.json
-    "scripts": {
-        // Other codes here, replace if necessary
-        "lint:frontend": "npm --prefix packages/frontend run lint",
-        "lint:frontend:check": "npm --prefix packages/frontend run lint:check",
-        "format:frontend": "npm --prefix packages/frontend run format",
-        "format:frontend:check": "npm --prefix packages/frontend run format:check",
-        "lint:backend": "<code_for_linting_backend>",
-        "format:backend": "<code_for_formatting_backend>"
-    }
+// package.json
+"scripts": {
+    // Other codes here, replace if necessary
+    "lint:frontend": "npm --prefix packages/frontend run lint",
+    "lint:frontend:check": "npm --prefix packages/frontend run lint:check",
+    "format:frontend": "npm --prefix packages/frontend run format",
+    "format:frontend:check": "npm --prefix packages/frontend run format:check",
+    "lint:backend": "<code_for_linting_backend>",
+    "format:backend": "<code_for_formatting_backend>"
+}
 ```
 
 Replace the `< >` parts with the relevant codes, according to the programming language.
 
 ```json
-    // .lintstagedrc.json
-    {
-        "frontend/**/*.{ts,tsx,js,jsx,cjs,yml,yaml}": [
-            "npm run format:frontend",
-            "npm run format:frontend:check",
-            "npm run lint:frontend",
-            "npm run lint:frontend:check"
-        ],
-        "backend/**/*.py": [
-            "npm run format:backend",
-            "npm run lint:backend"
-        ]
-    }
+// .lintstagedrc.json
+{
+    "frontend/**/*.{ts,tsx,js,jsx,cjs,yml,yaml}": [
+        "npm run format:frontend",
+        "npm run format:frontend:check",
+        "npm run lint:frontend",
+        "npm run lint:frontend:check"
+    ],
+    "backend/**/*.py": [
+        "npm run format:backend",
+        "npm run lint:backend"
+    ]
+}
 ```
 
 Ensure that within the `packages/frontend/package.json` file, you still have the codes from before for `lint`, `format`, etc.
@@ -136,7 +136,7 @@ These packages are great for quality of life, but may not be absolutely necessar
 Run the following command to install the package:
 
 ```bash
-    npm i --save-dev swr
+npm i --save-dev swr
 ```
 
 And you can now import it into respective pages for use!
@@ -164,8 +164,8 @@ After you have initiated your base project in your framework and language of cho
 Run the following command to install the package:
 
 ```bash
-    # Make sure you are at the root of your project
-    npx storybook@latest init
+# Make sure you are at the root of your project
+npx storybook@latest init
 ```
 
 Storybook will automatically open up its interface at <http://localhost:6006/>, which then you can visit for live preview and manipulation of the components you have created in the project.
@@ -181,7 +181,7 @@ This is for initializing the project with Tailwind CSS installed. Perform the be
 Run the following command:
 
 ```bash
-    npm install tailwindcss @tailwindcss/vite
+npm install tailwindcss @tailwindcss/vite
 ```
 
 Then, we update the configuration file:
