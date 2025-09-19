@@ -65,7 +65,60 @@ Edit `package.json` to add these lines at the bottom of it:
     }
 ```
 
-Heres the tricky part - You have to compare the current files inside `config_files` with the newly created application files that have the same name, and copy the lines of code you want over.
+Alternatively, there is another method to include the `lint-staged` configuration above, which is recommended for mono-repo projects that have different configurations across, or different programming languages.
+
+Create a file called `.lintstagedrc.json` and add in the above. This assumes your structure resembles the following:
+
+```txt
+    my-monorepo/
+    │── package.json          # root for Husky, lint-staged, etc.
+    │── .husky/
+    │── .lintstagedrc.json
+    │── packages/
+    │   ├── frontend/         # your Vite project lives here
+    │   └── backend/
+```
+
+The code from above will change slightly in this configuration:
+
+```json
+    // package.json
+    "scripts": {
+        // Other codes here, replace if necessary
+        "lint:frontend": "npm --prefix packages/frontend run lint",
+        "lint:frontend:check": "npm --prefix packages/frontend run lint:check",
+        "format:frontend": "npm --prefix packages/frontend run format",
+        "format:frontend:check": "npm --prefix packages/frontend run format:check",
+        "lint:backend": "<code_for_linting_backend>",
+        "format:backend": "<code_for_formatting_backend>"
+    }
+```
+
+Replace the `< >` parts with the relevant codes, according to the programming language.
+
+```json
+    // .lintstagedrc.json
+    {
+        "frontend/**/*.{ts,tsx,js,jsx,cjs,json,yml,yaml}": [
+            "npm run format:frontend",
+            "npm run format:frontend:check",
+            "npm run lint:frontend",
+            "npm run lint:frontend:check",
+            "git add"
+        ],
+        "backend/**/*.py": [
+            "npm run format:backend",
+            "npm run lint:backend",
+            "git add"
+        ]
+    }
+```
+
+Ensure that within the `packages/frontend/package.json` file, you still have the codes from before for `lint`, `format`, etc.
+
+You need not include the `lint-staged` codes as we have moved them to the root of the project.
+
+Then, heres the tricky part - You have to compare the current files inside `config_files` with the newly created application files that have the same name, and copy the lines of code you want over.
 
 Usually, copying over what is missing inside those files from the current files is sufficient, or the whole file if it does not exist.
 
