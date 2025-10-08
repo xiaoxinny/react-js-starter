@@ -30,9 +30,17 @@ Run the following command to install the packages below (make sure you have chan
 - [lint-staged](https://github.com/lint-staged/lint-staged) (For linting of staged files)
 - [ESLint](https://eslint.org/) (Static code linting and debugging)
 - [Prettier](https://prettier.io/) (Code formatting)
+- [Tanstack Query](https://tanstack.com/query/latest) (Data fetching and state validation)
 
 ```bash
-npm install --save-dev husky lint-staged prettier eslint-config-prettier eslint-plugin-prettier prettier-plugin-packagejson eslint-plugin-unicorn eslint-plugin-react eslint-plugin-n
+npm install --save-dev husky lint-staged prettier eslint-config-prettier eslint-plugin-prettier prettier-plugin-packagejson eslint-plugin-unicorn eslint-plugin-react eslint-plugin-n @tanstack/eslint-plugin-query
+
+```
+
+And also the following:
+
+```bash
+npm i @tanstack/react-query 
 ```
 
 Afterwards, run the following commands:
@@ -119,6 +127,23 @@ You need not include the `lint-staged` codes as we have moved them to the root o
 Then, heres the tricky part - You have to compare the current files inside `config_files` with the newly created application files that have the same name, and copy the lines of code you want over.
 
 Usually, copying over what is missing inside those files from the current files is sufficient, or the whole file if it does not exist.
+
+Lastly, create a sub-folder under `src`  named `utils`, and create a folder there named `react-query-client.ts`.
+Paste the following code in:
+
+```ts
+import { QueryClient } from '@tanstack/react-query';
+
+export const reactQueryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5000,
+      retry: 0,
+      refetchOnWindowFocus: false
+    }
+  }
+});
+```
 
 ## Optional packages
 
