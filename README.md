@@ -128,8 +128,8 @@ Then, heres the tricky part - You have to compare the current files inside `conf
 
 Usually, copying over what is missing inside those files from the current files is sufficient, or the whole file if it does not exist.
 
-Lastly, create a sub-folder under `src`  named `utils`, and create a folder there named `react-query-client.ts`.
-Paste the following code in:
+Lastly, create a sub-folder under `src`  named `utils`,create a folder there named `react-query-client.ts`.
+and paste the following code in:
 
 ```ts
 import { QueryClient } from '@tanstack/react-query';
