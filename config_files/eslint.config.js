@@ -13,6 +13,7 @@ import tseslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
 import nPlugin from 'eslint-plugin-n';
 import prettierPlugin from 'eslint-plugin-prettier';
+import queryPlugin from '@tanstack/eslint-plugin-query';
 
 export default defineConfig([
   globalIgnores([
@@ -53,7 +54,8 @@ export default defineConfig([
       unicorn: unicorn,
       n: nPlugin,
       prettier: prettierPlugin,
-      'typescript-eslint': tseslint
+      'typescript-eslint': tseslint,
+      'tanstack-query': queryPlugin
     },
 
     rules: {
@@ -83,7 +85,12 @@ export default defineConfig([
       // 'n/no-unsupported-features/node': ['error', { version: '>=18' }],
 
       // Misc / other
-      'no-process-env': 'off'
+      'no-process-env': 'off',
+
+      // Tanstack Query
+      '@tanstack/eslint-plugin-query/exhaustive-deps': 'warn',
+      '@tanstack/eslint-plugin-query/missing-key': 'error',
+      '@tanstack/eslint-plugin-query/no-unnecessary-query-keys': 'error',
 
       // Add any other custom rules here
     },
