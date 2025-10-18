@@ -107,13 +107,13 @@ Replace the `< >` parts with the relevant codes, according to the programming la
 ```json
 // .lintstagedrc.json
 {
-    "frontend/**/*.{ts,tsx,js,jsx,cjs,yml,yaml}": [
+    "packages/frontend/**/*.{ts,tsx,js,jsx,cjs,yml,yaml}": [
         "npm run format:frontend",
         "npm run format:frontend:check",
         "npm run lint:frontend",
         "npm run lint:frontend:check"
     ],
-    "backend/**/*.py": [
+    "packages/backend/**/*.py": [
         "npm run format:backend",
         "npm run lint:backend"
     ]
