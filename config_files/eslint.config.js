@@ -87,10 +87,10 @@ export default defineConfig([
       // Misc / other
       'no-process-env': 'off',
 
-  // Tanstack Query
-  '@tanstack/query/exhaustive-deps': 'warn',
-  '@tanstack/query/missing-key': 'error',
-  '@tanstack/query/no-unnecessary-query-keys': 'error',
+      // Tanstack Query (use rules provided by the installed plugin)
+      '@tanstack/query/exhaustive-deps': 'warn',
+      '@tanstack/query/no-rest-destructuring': 'warn',
+      '@tanstack/query/stable-query-client': 'error'
 
       // Add any other custom rules here
     },

@@ -6,24 +6,24 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
-    project: './tsconfig.json',
+    project: './tsconfig.json'
   },
   env: {
     browser: true,
     node: true,
-    es2022: true,
+    es2022: true
   },
   extends: [
-    js.configs.recommended,                    // <-- ESLint JS linting
+    js.configs.recommended, // <-- ESLint JS linting
     'plugin:@typescript-eslint/recommended',
     'plugin:unicorn/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:react-refresh/recommended',
     'plugin:prettier/recommended',
-    'plugin:@tanstack/query/recommended',
+    'plugin:@tanstack/query/recommended'
   ],
   plugins: [
     '@typescript-eslint',
@@ -32,7 +32,7 @@ module.exports = {
     'react-refresh',
     'unicorn',
     'n',
-    'prettier',
+    'prettier'
   ],
   rules: {
     // Unicorn rules
@@ -57,15 +57,15 @@ module.exports = {
     // Node env
     'no-process-env': 'off',
 
-    // Tanstack Query
+    // Tanstack Query (use rules provided by the installed plugin)
     '@tanstack/query/exhaustive-deps': 'warn',
-    '@tanstack/query/missing-key': 'error',
-    '@tanstack/query/no-unnecessary-query-keys': 'error',
+    '@tanstack/query/no-rest-destructuring': 'warn',
+    '@tanstack/query/stable-query-client': 'error'
   },
   settings: {
     react: {
-      version: 'detect',
-    },
+      version: 'detect'
+    }
     // For eslint-plugin-n, you could set:
     // node: { version: '>=18' }
   },
@@ -83,6 +83,6 @@ module.exports = {
     '*.tsbuildinfo',
     '.env',
     '.env.*',
-    '.DS_Store',
-  ],
+    '.DS_Store'
+  ]
 };
