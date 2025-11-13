@@ -87,6 +87,8 @@ my-monorepo/
 │   └── backend/
 ```
 
+Take note that in this case, `lint-staged` and `husky` must be installed in the root, whilst the rest of the packages (from `prettier` and onwards), must be installed in the desired directory to be linted.
+
 The code from above will change slightly in this configuration:
 
 ```json
@@ -103,6 +105,8 @@ The code from above will change slightly in this configuration:
 ```
 
 Replace the `< >` parts with the relevant codes, according to the programming language.
+
+Replace the argument after `--prefix` with where your directory for linting is, relative to the root.
 
 ```json
 // .lintstagedrc.json
