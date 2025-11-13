@@ -23,7 +23,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:react-refresh/recommended',
     'plugin:prettier/recommended',
-    'plugin:@tanstack/eslint-plugin-query/recommended',
+    'plugin:@tanstack/query/recommended',
   ],
   plugins: [
     '@typescript-eslint',
@@ -58,9 +58,9 @@ module.exports = {
     'no-process-env': 'off',
 
     // Tanstack Query
-    '@tanstack/eslint-plugin-query/exhaustive-deps': 'warn',
-    '@tanstack/eslint-plugin-query/missing-key': 'error',
-    '@tanstack/eslint-plugin-query/no-unnecessary-query-keys': 'error',
+    '@tanstack/query/exhaustive-deps': 'warn',
+    '@tanstack/query/missing-key': 'error',
+    '@tanstack/query/no-unnecessary-query-keys': 'error',
   },
   settings: {
     react: {

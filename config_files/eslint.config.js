@@ -55,7 +55,7 @@ export default defineConfig([
       n: nPlugin,
       prettier: prettierPlugin,
       'typescript-eslint': tseslint,
-      'tanstack-query': queryPlugin
+      '@tanstack/query': queryPlugin
     },
 
     rules: {
@@ -87,10 +87,10 @@ export default defineConfig([
       // Misc / other
       'no-process-env': 'off',
 
-      // Tanstack Query
-      '@tanstack/eslint-plugin-query/exhaustive-deps': 'warn',
-      '@tanstack/eslint-plugin-query/missing-key': 'error',
-      '@tanstack/eslint-plugin-query/no-unnecessary-query-keys': 'error',
+  // Tanstack Query
+  '@tanstack/query/exhaustive-deps': 'warn',
+  '@tanstack/query/missing-key': 'error',
+  '@tanstack/query/no-unnecessary-query-keys': 'error',
 
       // Add any other custom rules here
     },
