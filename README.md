@@ -2,6 +2,8 @@
 
 This template serves the purpose of making it simple for starting React.js based frontend applications. The language used here is **`Typescript`**.
 
+**NOTE:** During the installation process, you may be asked for the **project name** and or the **package name**. Please note that **project name** will be the folder name, and the **package name** is the `package.json` name. You may rename as needed even if you create wrongly.
+
 Before beginning, the following command must be ran to create the React.js application:
 
 ```bash
@@ -87,7 +89,7 @@ my-monorepo/
 │   └── backend/
 ```
 
-Take note that in this case, `lint-staged` and `husky` must be installed in the root, whilst the rest of the packages (from `prettier` and onwards), must be installed in the desired directory to be linted.
+Take note that in this case, `lint-staged` and `husky` must be installed in the root, whilst the rest of the packages (from `prettier` and onwards), must be installed in the desired directory to be linted (includes `tanstack-router`).
 
 The code from above will change slightly in this configuration:
 
@@ -155,10 +157,21 @@ These packages are great for quality of life, but may not be absolutely necessar
 
 ### Packages
 
+- [Material UI](https://mui.com/material-ui/) (Top-tier Material Design oriented component library)
 - [SWR](https://swr.vercel.app/) (For browser-based caching and efficient fetching of server data)
 - [Storybook](https://storybook.js.org/) (For component-based previewing)
 
 ### Installation
+
+#### `Material UI` (MUI)
+
+Run the following command to install the packages:
+
+```bash
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
+```
+
+This will install the MUI base library, the styling library `emotion` for CSS-in-JS, and the icons library for MUI.
 
 #### `stale-while-revalidate` (SWR)
 
@@ -238,3 +251,34 @@ export default function Home() {
   return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
 }
 ```
+
+### `theme.ts` file
+
+Most of the time when using Typescript, you would not be needing this.
+
+However, in production environments, especially when you have MUI installed, this is necessary in order to give custom fonts and styling to your components (or your design language).
+
+Copy over the file in the root of your `/src` folder, and configure the necessary fields as needed.
+
+When using the theme, use the following code:
+
+```ts
+
+...
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { useMemo } from 'react';
+import { getTheme } from './theme';
+
+function ___() {
+  const theme = useMemo(() => createTheme(getTheme()), []);
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline>
+        ...
+      </CssBaseline>
+    </ThemeProvider>
+  );
+}
+```
+
+Usually, the above is used in the `App.tsx` file.
