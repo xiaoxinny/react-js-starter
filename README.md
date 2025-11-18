@@ -260,25 +260,21 @@ However, in production environments, especially when you have MUI installed, thi
 
 Copy over the file in the root of your `/src` folder, and configure the necessary fields as needed.
 
-When using the theme, use the following code:
+Copy over the `context` folder and its contents to the root of `/src`. This contains the state for your colour mode persistence and also a hook that can be called by your toggle button for changing the colour.
 
-```ts
+Wrap your `App.tsx` app component like such:
 
+```tsx
 ...
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import { useMemo } from 'react';
-import { getTheme } from './theme';
+import { ColorModeProvider } from './contexts/ColorModeContext';
 
-function ___() {
-  const theme = useMemo(() => createTheme(getTheme()), []);
+function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline>
-        ...
-      </CssBaseline>
-    </ThemeProvider>
+    <ColorModeProvider>
+      ...
+    </ColorModeProvider>
   );
 }
-```
 
-Usually, the above is used in the `App.tsx` file.
+export default App;
+```
