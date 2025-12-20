@@ -44,7 +44,8 @@ export default defineConfig([
       globals: {
         ...globals.browser,
         ...globals.node
-      }
+      },
+      tsconfigRootDir: '.',
     },
 
     plugins: {
