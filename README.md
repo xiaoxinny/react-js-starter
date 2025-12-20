@@ -266,7 +266,7 @@ Wrap your `App.tsx` app component like such:
 
 ```tsx
 ...
-import { ColorModeProvider } from './contexts/ColorModeContext';
+import { ColorModeProvider } from './context/ColorModeContext';
 
 function App() {
   return (
