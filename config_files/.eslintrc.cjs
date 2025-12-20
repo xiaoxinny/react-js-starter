@@ -9,7 +9,6 @@ module.exports = {
       jsx: true
     },
     project: './tsconfig.json',
-    tsconfigRootDir: '.',
   },
   env: {
     browser: true,
